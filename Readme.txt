@@ -42,18 +42,20 @@ chmod +x /path/to/build.sh
 
 docker-compose up
 
+Note : you need check eureka server on http://Your_IP:8761 and rabbit MQ http://Your_IP:15672 . When all service has register, you can init data as below and test it
 ______________________________________________________________________Init Database________________________________________________
 -- import data from mongo to mongodb
 -- go to Icom-xtra-setup folder and call below command
+--change below IP to your server IP
 
-mongoimport --host "104.215.148.134"(your ip) --port "27017" --db "icom" --collection "inventory" --file "inventory.json" --jsonArray
+mongoimport --host "104.215.148.134" --port "27017" --db "icom" --collection "inventory" --file "inventory.json" --jsonArray
 mongoimport --host "104.215.148.134" --port "27017" --db "icom" --collection "product" --file "products.json" --jsonArray
 mongoimport --host "104.215.148.134" --port "27017" --db "icom" --collection "productCategory" --file "productCategory.json" --jsonArray
 
 -- import mySQL:
 - access my sql via command
 
-mysql -u root -p123456 -h (your Ip) -P 3306 (example : mysql -u root -p123456 -h 23.97.51.103 -P 3306)
+mysql -u root -p123456 -h (your Ip) -P 3306 (example : mysql -u root -p123456 -h 104.215.148.134 -P 3306)
 
 >>>>>>>>>>>>>>call below command to create database(It's may fail because code has create some table but it doesn't have full data)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
@@ -210,6 +212,21 @@ http://104.215.148.134:9000/product/productsByColor?color=red
 Search categories by Name
 http://104.215.148.134:9000/product/productsByName?name=Laxme 12
 
+
+Post to add to cart:
+http://104.215.148.134:9000/cart/customerCart/
+data
+{"userId":"5aa02b23-6c76-6fc9-2309-8991874c01a6","activeSince":null,"coupen":null,"lineItems":[{"id":"60bf5482eeb8cc2b9a7d24aa","name":"Action classic","price":167,"quantity":2,"inventoryId":2},{"id":"60bf5482eeb8cc2b9a7d24aa","name":"Action classic","price":167,"quantity":2,"inventoryId":2},{"id":"60bf5482eeb8cc2b9a7d24aa","name":"Action classic","price":167,"quantity":2,"inventoryId":2},{"id":"60bf5482eeb8cc2b9a7d24ab","name":"Addidas DX","price":180,"quantity":2,"inventoryId":3}]}
+
+
+Post to order(order confirm)
+http://104.215.148.134:9000/core/order/
+data
+case 1 : Out of stock
+{"userId":"admin","lineItems":[{"inventoryId":3,"price":180,"quantity":20,"productId":"60bf5482eeb8cc2b9a7d24ab","productName":"Addidas DX"},{"inventoryId":3,"price":180,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24ab","productName":"Addidas DX"},{"inventoryId":3,"price":180,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24ab","productName":"Addidas DX"}]}
+
+case 2: success
+{"userId":"admin","lineItems":[{"inventoryId":25,"price":120,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24c2","productName":"Don"}]}
 _______________________________________________________________________Management____________________________________________________________
 
 rabbit MQ management(manage messenger) login username : guest and pass : guest
@@ -243,21 +260,3 @@ http://104.215.148.134:9000/product/productsByName?name=Laxme 12
 
 see product detail
 http://104.215.148.134:9000/product/products/60bf5482eeb8cc2b9a7d24aa
-
-
-Post to add to cart http://104.215.148.134:9000/cart/customerCart/
-data
-{"userId":"5aa02b23-6c76-6fc9-2309-8991874c01a6","activeSince":null,"coupen":null,"lineItems":[{"id":"60bf5482eeb8cc2b9a7d24aa","name":"Action classic","price":167,"quantity":2,"inventoryId":2},{"id":"60bf5482eeb8cc2b9a7d24aa","name":"Action classic","price":167,"quantity":2,"inventoryId":2},{"id":"60bf5482eeb8cc2b9a7d24aa","name":"Action classic","price":167,"quantity":2,"inventoryId":2},{"id":"60bf5482eeb8cc2b9a7d24ab","name":"Addidas DX","price":180,"quantity":2,"inventoryId":3}]}
-
-
-Post to order
-
-http://104.215.148.134:9000/core/order/
-
-data
-
-Out of stock
-{"userId":"admin","lineItems":[{"inventoryId":3,"price":180,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24ab","productName":"Addidas DX"},{"inventoryId":3,"price":180,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24ab","productName":"Addidas DX"},{"inventoryId":3,"price":180,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24ab","productName":"Addidas DX"}]}
-
-success
-{"userId":"admin","lineItems":[{"inventoryId":25,"price":120,"quantity":2,"productId":"60bf5482eeb8cc2b9a7d24c2","productName":"Don"}]}
