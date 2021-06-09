@@ -15,18 +15,16 @@
 	<img src="https://github.com/nkhai/nabcom/blob/master/Icom-xtra-setup/base_arhcitect.PNG"></img>
 </div>
 <div>
-	we are notice, it has 2 progress of read and write data in to type of db(mongo and mysql). The ordercontroller get a request from user, <br/>
-	it will send 1 command to distribute commandbus and waitting to handle. <br/>
-	The handle command will get 1 command from distribute command bus and progress(must same command event type). <br/>
-	The command handle will be send 2 event updateProductStock and notifyCreation(store in history) via rabbitMQ. <br/>
-	It will be handle in eventhandle and store to database,updateProductStock will store to mysql and notifyCreation will store in Mongodb.<br/>
-	* the database in MongoDb is focus on reading, it mean any visualization on web need data. it will be focus on mongodb.<br/>
-	* The database in MySQL is focus on writing, it mean anything relate to stock, it need to send to a queue(rabbit MQ) and store in Mysql	<br/>
-	The database from Mongo and Mysql will be synchronize via third party software(similar oracle database guard)
-	Any rollback in progress has handle via saga pattern in Axon. Example you want cancel or 1 delivery fail. It will be send 2 event, 
-	the first event will be update history and sendcon event will update product stock. It can be many saga in same time.
+	we notice, it has 2 progress of reading and write data into the type of DB(mongo and MySQL). The ordercontroller get a request from the user, it will send 1 command to distribute commandbus and waiting to handle.</br></br>
+ 	<p>The handle command will get 1 command from distributing command bus and progress(must same command event type).</p>
+ 	<p>The command handle will be sent 2 event updateProductStock and notifyCreation(store­ in history) via rabbitMQ.</p>
+ 	It will be handle in eventhandle and store to database, updateProductStock will store to MySQL and notifyCreation(Update history) will store in MongoDB.</br></br>
+ 		<li>the database in MongoDb is focused on reading, which means any visualization on the web needs data. it will be focus on mongodb.</li>
+ 		<li>The database in MySQL focuses on writing, it means anything relate to stock, need to send to a queue(rabbit MQ) and store in Mysql</li></br>
+ 	The database from Mongo and Mysql will be synchronized via third-party software(similar oracle database guard) .</br></br>
+ 	Any rollback in progress has handle via saga pattern in Axon. For example, you want to cancel or 1 delivery fail. It will be sent 2 events, the first event will be updated history, and send event will update product stock. It can be many sagas at the same time.</br></br>
 </div>
-	Below it is work flow to call from user<br/>
+	Below is work-flow to call from user<br/>
 	<img src="https://github.com/nkhai/nabcom/blob/master/Icom-xtra-setup/flow_chart1.png"></img>
 <br/>
 <br/> 
