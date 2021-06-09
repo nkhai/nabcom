@@ -48,6 +48,7 @@ before you start. You need modify eureka serviceUrl on below file(It is your IP 
 .\Icom-history\src\main\resources\application.yml<br/>
 .\Icom-product\src\main\resources\application.yml<br/>
 .\Icom-user\src\main\resources\application.yml<br/>
+.\Icom-registry\src\main\resources\application.yml<br/>
 <br/>
 Change <br/>
     eureka:
