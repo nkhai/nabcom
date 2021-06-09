@@ -35,6 +35,9 @@ _______________________________________________________________________Running__
 
 mvn clean install
 
+----add permisison for sh file to build
+chmod +x /path/to/build.sh
+
 ./build.sh
 
 docker-compose up
@@ -43,13 +46,15 @@ ______________________________________________________________________Init Datab
 -- import data from mongo to mongodb
 -- go to Icom-xtra-setup folder and call below command
 
-mongoimport --host "23.97.51.103"(your ip) --port "27017" --db "icom" --collection "inventory" --file "inventory.json" --jsonArray
-mongoimport --host "23.97.51.103" --port "27017" --db "icom" --collection "product" --file "products.json" --jsonArray
-mongoimport --host "23.97.51.103" --port "27017" --db "icom" --collection "productCategory" --file "productCategory.json" --jsonArray
+mongoimport --host "104.215.148.134"(your ip) --port "27017" --db "icom" --collection "inventory" --file "inventory.json" --jsonArray
+mongoimport --host "104.215.148.134" --port "27017" --db "icom" --collection "product" --file "products.json" --jsonArray
+mongoimport --host "104.215.148.134" --port "27017" --db "icom" --collection "productCategory" --file "productCategory.json" --jsonArray
 
 -- import mySQL:
 - access my sql via command
+
 mysql -u root -p123456 -h (your Ip) -P 3306 (example : mysql -u root -p123456 -h 23.97.51.103 -P 3306)
+
 >>>>>>>>>>>>>>call below command to create database(It's may fail because code has create some table but it doesn't have full data)>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 use icom;

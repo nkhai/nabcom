@@ -36,72 +36,61 @@ services:
       - '9000:9000' 
     networks:
       - microservices
-  # icomproduct:
-  #   image: icom-product:latest
-  #   depends_on:
-  #     - rabbitmq      
-  #     - icomregistry
-  #     - mysql
-  #     - mongo
-  #   ports:
-  #     - "8081:8081"
-  #   networks:
-  #     - microservices
-  # icomuser:
-  #   image: icom-user:latest
-  #   ports:
-  #     - "8083:8083"
-  #   depends_on:
-  #     - rabbitmq      
-  #     - icomregistry
-  #     - mysql
-  #     - mongo
-  #   networks:
-  #     - microservices
-  # icomhistory:
-  #   image: icom-history:latest
-  #   depends_on:
-  #     - rabbitmq      
-  #     - icomregistry
-  #     - mysql
-  #     - mongo
-  #   ports:
-  #     - "8085:8085"
-  #   networks:
-  #     - microservices
-  # icomcore:
-  #   image: icom-core:latest
-  #   depends_on:
-  #     - rabbitmq      
-  #     - icomregistry
-  #     - mysql
-  #     - mongo
-  #   ports:
-  #     - "8084:8084"
-  #   networks:
-  #     - microservices
-  # icomcart:
-  #   image: icom-cart:latest
-  #   depends_on:
-  #     - rabbitmq      
-  #     - icomregistry
-  #     - mysql
-  #     - mongo
-  #   ports:
-  #     - "8082:8082"
-  #   networks:
-  #     - microservices
-  # icomweb:
-  #   image: icom-web:latest
-  #   depends_on:
-  #     - rabbitmq      
-  #     - icomregistry
-  #     - mysql
-  #     - mongo
-  #   ports:
-  #     - "8080:8080"
-  #   networks:
-  #     - microservices
+  icomproduct:
+    image: icom-product:latest
+    depends_on:
+      - rabbitmq      
+      - icomregistry
+      - mysql
+      - mongo
+    ports:
+      - "8081:8081"
+    networks:
+      - microservices
+  icomuser:
+    image: icom-user:latest
+    ports:
+      - "8083:8083"
+    depends_on:
+      - rabbitmq      
+      - icomregistry
+      - mysql
+      - mongo
+    networks:
+      - microservices
+  icomhistory:
+    image: icom-history:latest
+    depends_on:
+      - rabbitmq      
+      - icomregistry
+      - mysql
+      - mongo
+    ports:
+      - "8085:8085"
+    networks:
+      - microservices
+  icomcore:
+    image: icom-core:latest
+    depends_on:
+      - rabbitmq      
+      - icomregistry
+      - mysql
+      - mongo
+    ports:
+      - "8084:8084"
+    networks:
+      - microservices
+  icomcart:
+    image: icom-cart:latest
+    depends_on:
+      - rabbitmq      
+      - icomregistry
+      - mysql
+      - mongo
+    ports:
+      - "8082:8082"
+    networks:
+      - microservices 
 networks:
   microservices:
     driver: bridge
