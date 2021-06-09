@@ -1,4 +1,7 @@
-______________________________________________________enviroment requirement__________________________________________________
+![alt text](https://github.com/vkn1hc/nabcom/blob/master/Icom-xtra-setup/image.jpg?raw=true)
+
+
+______________________________enviroment requirement________________________________________
 
 * Unbutu
 * Docker
@@ -30,7 +33,7 @@ To
             serviceUrl:
             defaultZone : http://Your_IP:8761/eureka/
 
-_______________________________________________________________________Running___________________________________________________
+_______________Running___________________________________________________
 --call below command
 
 mvn clean install
