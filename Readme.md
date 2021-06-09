@@ -51,19 +51,19 @@ before you start. You need modify eureka serviceUrl on below file(It is your IP 
 .\Icom-registry\src\main\resources\application.yml<br/>
 <br/>
 Change <br/>
-    eureka:
-        client:
-            registerWithEureka: true
-            fetchRegistry: true
-            serviceUrl:
-            defaultZone : http://104.215.148.134:8761/eureka/<br/>
+   &emsp;eureka:<br/>
+   &emsp;&emsp;client:<br/>
+   &emsp;&emsp;&emsp;registerWithEureka: true<br/>
+   &emsp;&emsp;&emsp;fetchRegistry: true<br/>
+   &emsp;&emsp;&emsp;serviceUrl:<br/>
+   &emsp;&emsp;&emsp;defaultZone : http://104.215.148.134:8761/eureka/<br/>
 To<br/>
-    eureka:
-        client:
-            registerWithEureka: true
-            fetchRegistry: true
-            serviceUrl:
-            defaultZone : http://Your_IP:8761/eureka/<br/>
+    &emsp;eureka:<br/>
+        &emsp;&emsp;client:<br/>
+            &emsp;&emsp;&emsp;registerWithEureka: true<br/>
+            &emsp;&emsp;&emsp;fetchRegistry: true<br/>
+            &emsp;&emsp;&emsp;serviceUrl:<br/>
+            &emsp;&emsp;&emsp;defaultZone : http://Your_IP:8761/eureka/<br/>
 <br/>
 ---------------------------------------------------------------------Running----------------------------------------------------------<br/>
 --call below command<br/>
