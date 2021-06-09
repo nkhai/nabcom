@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: icom-history
+  data:
+    mongodb:
+      uri: mongodb://mongo:27017/test
+server:
+  port: 8085
+icom:
+  amqp:
+    rabbit:
+      address: rabbitmq:5672
+      username: guest
+      password: guest
+      vhost: /
+      exchange: Icom-exchange
+      queue: Icom-order-histo-queue
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true 
+    serviceUrl:
+      defaultZone : http://104.215.148.134:8761/eureka/
+axon:
+  axonserver:
+    servers: 23.97.51.103

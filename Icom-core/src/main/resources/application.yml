@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: icom-core
+  datasource:
+    url: jdbc:mysql://mysql:3306/icom?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: SELECT 1;
+    initial-size: 2
+    sql-script-encoding: UTF-8
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate.ddl-auto: update
+  data:
+    mongodb:
+      uri: mongodb://mongo:27017/icom
+  cloud:
+    config:
+      server:
+        uri: http://icom-config:8888
+server:
+  port: 8084
+
+icom:
+  amqp:
+    rabbit:
+      address: rabbitmq:5672
+      username: guest
+      password: guest
+      vhost: /
+      exchange: Icom-exchange
+      queue: Icom-core-queue
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true 
+    serviceUrl:
+      defaultZone : http://104.215.148.134:8761/eureka/
+axon:
+  axonserver:
+    servers: 23.97.51.103
+
+

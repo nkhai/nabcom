@@ -1,0 +1,40 @@
+spring:
+  application:
+      name: icom-cart
+  datasource:
+      url: jdbc:mysql://mysql:3306/icom?allowPublicKeyRetrieval=true&useSSL=false
+      username: root
+      password: 123456
+      validation-query: SELECT 1;
+      initial-size: 2
+      sql-script-encoding: UTF-8
+      driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate.ddl-auto: update
+server:
+  port: 8082
+icom:
+  amqp:
+    rabbit:
+      address : rabbitmq:5672
+      username: guest
+      password: guest
+      vhost : /
+      exchange: Icom-02
+      queue: Icom-event-history_03
+rabbitmq:
+  queue-listener:
+    recovery-interval: 1000
+    prefetch-count: 1
+    cluster-transaction-size: 2
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone : http://104.215.148.134:8761/eureka/
+axon:
+  axonserver:
+    servers: 23.97.51.103

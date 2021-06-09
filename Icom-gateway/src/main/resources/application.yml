@@ -1,0 +1,45 @@
+spring:
+ application:
+     name: icom-gateway
+server:
+  port: 9000
+zuul:
+  ribbon:
+    eager-load:
+      enabled: true
+  routes:
+     cart:
+        path: /cart/**
+        service-id: ICOM-CART
+     core:
+        path: /core/**
+        service-id: ICOM-CORE
+     orderhistory:
+        path: /orderhistory/**
+        service-id: ICOM-HISTORY
+     delivery:
+        path: /delivery/**
+        service-id: ICOM-DELIVERY
+     shipping:
+        path: /shipping/**
+        service-id: ICOM-SHIPPING
+     product:
+        path: /product/**
+        service-id: ICOM-PRODUCT
+     customer:
+        path: /customer/**
+        service-id: ICOM-USER
+eureka:
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+            defaultZone: http://104.215.148.134:8761/eureka/,http://104.215.148.134:8762/eureka/
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 2000
+

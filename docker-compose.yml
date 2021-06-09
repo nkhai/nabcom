@@ -1,0 +1,108 @@
+version: "3"
+
+services:    
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    networks:
+      - microservices
+  mongo:
+    image: bitnami/mongodb:latest        
+    ports:
+      - "27017:27017"
+    networks:
+      - microservices
+  mysql:
+    image: mysql:latest        
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_DATABASE=icom
+      - MYSQL_ROOT_PASSWORD=123456
+    networks:
+      - microservices
+  icomregistry:
+    image: icom-registry:latest
+    ports:
+      - '8761:8761'
+    networks:
+      - microservices
+  icomgateway:
+    image: icom-gateway:latest
+    ports:
+      - '9000:9000' 
+    networks:
+      - microservices
+  # icomproduct:
+  #   image: icom-product:latest
+  #   depends_on:
+  #     - rabbitmq      
+  #     - icomregistry
+  #     - mysql
+  #     - mongo
+  #   ports:
+  #     - "8081:8081"
+  #   networks:
+  #     - microservices
+  # icomuser:
+  #   image: icom-user:latest
+  #   ports:
+  #     - "8083:8083"
+  #   depends_on:
+  #     - rabbitmq      
+  #     - icomregistry
+  #     - mysql
+  #     - mongo
+  #   networks:
+  #     - microservices
+  # icomhistory:
+  #   image: icom-history:latest
+  #   depends_on:
+  #     - rabbitmq      
+  #     - icomregistry
+  #     - mysql
+  #     - mongo
+  #   ports:
+  #     - "8085:8085"
+  #   networks:
+  #     - microservices
+  # icomcore:
+  #   image: icom-core:latest
+  #   depends_on:
+  #     - rabbitmq      
+  #     - icomregistry
+  #     - mysql
+  #     - mongo
+  #   ports:
+  #     - "8084:8084"
+  #   networks:
+  #     - microservices
+  # icomcart:
+  #   image: icom-cart:latest
+  #   depends_on:
+  #     - rabbitmq      
+  #     - icomregistry
+  #     - mysql
+  #     - mongo
+  #   ports:
+  #     - "8082:8082"
+  #   networks:
+  #     - microservices
+  # icomweb:
+  #   image: icom-web:latest
+  #   depends_on:
+  #     - rabbitmq      
+  #     - icomregistry
+  #     - mysql
+  #     - mongo
+  #   ports:
+  #     - "8080:8080"
+  #   networks:
+  #     - microservices
+networks:
+  microservices:
+    driver: bridge
+

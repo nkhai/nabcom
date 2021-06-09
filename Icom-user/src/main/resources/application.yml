@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: icom-user
+  datasource:
+    url: jdbc:mysql://mysql:3306/icom?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    validation-query: SELECT 1;
+    initial-size: 2
+    sql-script-encoding: UTF-8
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto :
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+server:
+  port: 8083
+  
+cloud:
+  config:
+    server:
+        uri: http://icom-config:8888
+
+rabbitmq:
+  queue-listener:
+    recovery-interval: 1000
+    prefetch-count: 1
+    cluster-transaction-size: 2
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone : http://104.215.148.134:8761/eureka/

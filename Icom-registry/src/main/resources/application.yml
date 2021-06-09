@@ -1,0 +1,15 @@
+spring:
+ application:
+     name: icom-registry
+cloud:
+  config:
+    server:
+      uri: http://104.215.148.134:8888
+eureka:
+ client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+           defaultZone: http://104.215.148.134:8761/eureka/
+server:
+  port: 8761
