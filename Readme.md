@@ -270,7 +270,7 @@ case 2: success<br/>
 ------------------------------------------------------------------------Management----------------------------------------------------------------<br/>
 <br/>
 rabbit MQ management(manage messenger) login username : guest and pass : guest<br/>
-http://104.215.148.134:15762<br/>
+http://104.215.148.134:15672<br/>
 <br/>
 eureka<br/>
 <br/>
