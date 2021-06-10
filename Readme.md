@@ -15,12 +15,12 @@
 	<img src="https://github.com/nkhai/nabcom/blob/master/Icom-xtra-setup/base_arhcitect.PNG"></img>
 </div>
 <div>
-	we notice, it has 2 progress of reading and write data into the type of DB(mongo and MySQL). The ordercontroller get a request from the user, it will send 1 command to distribute commandbus and waiting to handle.</br></br>
+	we notice, it has 2 progress of query and write data into the type of DB(mongo and MySQL). The ordercontroller get a request from the user, it will send 1 command to distribute commandbus and waiting to handle.</br></br>
  	<p>The handle command will get 1 command from distributing command bus and progress(must same command event type).</p>
  	<p>The command handle will be sent 2 event updateProductStock and notifyCreation(store­ in history) via rabbitMQ.</p>
  	It will be handle in eventhandle and store to database, updateProductStock will store to MySQL and notifyCreation(Update history) will store in MongoDB.</br></br>
- 		<li>the database in MongoDb is focused on reading, which means any visualization on the web needs data. it will be focus on mongodb.</li>
- 		<li>The database in MySQL focuses on writing, it means anything relate to stock, need to send to a queue(rabbit MQ) and store in Mysql</li></br>
+ 		<li>the database in MongoDb is focused on reading, which means any visualization on the web needs data.</li>
+ 		<li>The database in MySQL store information about stock, it means anything relate to productu, need to send to a queue(rabbit MQ) and store in Mysql</li></br>
  	The database from Mongo and Mysql will be synchronized via third-party software(similar oracle database guard) .</br></br>
  	Any rollback in progress has handle via saga pattern in Axon. For example, you want to cancel or 1 delivery fail. It will be sent 2 events, the first event will be updated history, and send event will update product stock. It can be many sagas at the same time.</br></br>
 </div>
