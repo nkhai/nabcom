@@ -230,17 +230,17 @@ Basic query of product(Below URL is azure cloud IP, you can use it but it can't 
 <br/>
 http://104.215.148.134:9000/product/categories/<br/>
 <br/>
-Search categories by name<br/>
+Search product by catalogue name<br/>
 http://104.215.148.134:9000/product/productsByCategory?category=women_footwear<br/>
 <br/>
-Search categories by price<br/>
+Search product by price<br/>
 http://104.215.148.134:9000/product/productsByPrice?minprice=10&maxprice=20<br/>
 <br/>
-Search categories by brand<br/>
+Search product by brand<br/>
 http://104.215.148.134:9000/product/listofbrand<br/>
 http://104.215.148.134:9000/product/productsByBrand?brand=NIKE<br/>
 <br/>
-Search categories by Color<br/>
+Search product by Color<br/>
 http://104.215.148.134:9000/product/productsByColor?color=red<br/>
 <br/>
 Search categories by Name<br/>
@@ -279,25 +279,5 @@ http://104.215.148.134:8761/<br/>
 gateway:<br/>
     http://104.215.148.134:9000/<br/>
 <br/>
-<br/>
-Get all catalogue:<br/>
-http://104.215.148.134:9000/product/categories/
-<br/>
-Search categories by name :<br/>
-http://104.215.148.134:9000/product/productsByCategory?category=women_footwear
-<br/>
-Search categories by price :<br/>
-http://104.215.148.134:9000/product/productsByPrice?minprice=10&maxprice=20
-<br/>
-Search categories by brand:<br/>
-http://104.215.148.134:9000/product/listofbrand<br/>
-http://104.215.148.134:9000/product/productsByBrand?brand=NIKE<br/>
-<br/>
-Search categories by Color<br/>
-http://104.215.148.134:9000/product/productsByColor?color=red<br/>
-<br/>
-Search categories by Name<br/>
-http://104.215.148.134:9000/product/productsByName?name=Laxme 12
-<br/>
-	</div>
+</div>
 
