@@ -243,7 +243,7 @@ http://104.215.148.134:9000/product/productsByBrand?brand=NIKE<br/>
 Search product by Color<br/>
 http://104.215.148.134:9000/product/productsByColor?color=red<br/>
 <br/>
-Search categories by Name<br/>
+Search Product by Name<br/>
 http://104.215.148.134:9000/product/productsByName?name=Laxme 12<br/>
 <br/>
 Get all Product<br/>
