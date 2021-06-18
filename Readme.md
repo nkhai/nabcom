@@ -21,7 +21,6 @@
  	It will be handle in eventhandle and store to database, updateProductStock will store to MySQL and notifyCreation(Update history) will store in MongoDB.</br></br>
  		<li>the database in MongoDb is focused on query, which means any visualization on the web needs data.</li>
  		<li>The database in MySQL store information about stock,sercurity, it means anything relate to product and user</li></br>
- 	The database from Mongo and Mysql will be synchronized via third-party software(similar oracle database guard) .</br></br>
  	Any rollback in progress has handle via saga pattern in Axon. For example, you want to cancel or 1 delivery fail. It will be sent 2 events, the first event will be updated history, and send event will update product stock. It can be many sagas at the same time.</br></br>
 </div>
 	Below is work-flow to call from user<br/>
